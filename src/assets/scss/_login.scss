@@ -1,0 +1,22 @@
+.login-box-wrapper {
+    border-radius: 15px;
+    overflow: hidden;
+    .login-box-single {
+        min-height: 75vh;
+    }
+    h1 {
+        font-weight: 600;
+        line-height: 1.4;
+    }
+    h3 {
+        font-weight: 500;
+    }
+    .logo {
+        width: 100px;
+        animation: scaleAnim 1s alternate infinite ease-in;
+    }
+    .arrow-down {
+        width: 50px;
+    }
+}
+

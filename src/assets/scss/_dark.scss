@@ -1,0 +1,89 @@
+body {
+    transition: 0.5s all ease-in-out;
+}
+.bg-light,
+.toggle_light {
+    transition: 0.5s all ease-in-out !important;
+}
+
+.album-single,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+    transition: 0.5s !important;
+}
+body.dark {
+    background-color: black;
+    #loginbtn h3 {
+        color: black !important;
+    }
+    .arrowleft {
+        path {
+            fill: white !important ;
+        }
+    }
+
+    .album-single {
+        // background-color: white !important;
+        border-color: white !important;
+        h5,
+        p {
+            color: white !important;
+        }
+        a {
+            background-color: $green !important;
+            &:hover {
+                background-color: $greenhover !important;
+            }
+        }
+    }
+    .bg-light,
+    .toggle_light {
+        background-color: black !important;
+    }
+    .text-black {
+        color: white !important;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        transition: 0.5s;
+        color: white;
+    }
+    .text-secondary {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+    .side_menu {
+        h6,
+        p,
+        span {
+            color: black !important;
+        }
+    }
+
+    .menu-btn__burger {
+        background-color: white !important;
+        &.open {
+            background-color: transparent !important;
+            &::after,
+            &::before {
+                background-color: black !important;
+            }
+        }
+        &::after,
+        &::before {
+            background-color: white !important;
+        }
+    }
+    .side_menu {
+        background-color: white !important;
+    }
+}

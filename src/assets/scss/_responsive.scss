@@ -1,0 +1,61 @@
+@media (max-width: 1200px) {
+    .login-box-wrapper {
+        .login-box-single {
+            min-height: 50vh !important;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .login-box-wrapper {
+        border-radius: 0px !important;
+        .login-box-single {
+            min-height: 100vh !important;
+        }
+    }
+    .cursor-md-pointer {
+        cursor: pointer;
+    }
+    .searchbar__container input {
+        margin-left: 20px;
+    }
+}
+@media (max-width: 768px) {
+}
+
+@media (max-width: 576px) {
+    .side_menu {
+        max-width: 300px;
+    }
+    html {
+        font-size: 16px !important;
+    }
+    h2  {
+        font-size: 1.7rem !important;
+    }
+    .searchbar__container {
+        height: 50px;
+        display: flex;
+        margin-top: 10px;
+        align-items: center;
+        justify-content: center;
+
+        .logo {
+            width: 40px !important;
+        }
+
+        input {
+            height: 40px !important;
+            margin-left: 10px;
+            max-width: 200px;
+        }
+    }
+    .loader {
+        .logo {
+            width: 60px !important;
+        }
+    }
+    .single-artist-item .artist-info h2 {
+        font-size: 1.2rem !important;
+    }
+}

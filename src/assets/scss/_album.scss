@@ -1,0 +1,29 @@
+.album-single {
+    border: 1px solid black;
+    border-bottom: 0px;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    .album-img {
+        padding-top: 60%;
+        position: relative;
+        img {
+            overflow: hidden;
+        }
+    }
+
+    a {
+        background-color: black;
+        color: white !important;
+        font-size: 0.9rem;
+        text-align: center;
+        transition: 0.5s;
+        overflow: hidden;
+        &:hover {
+            background-color: $green !important;
+        }
+    }
+}
+.flex-grow-1 {
+    flex-grow: 1 !important;
+}

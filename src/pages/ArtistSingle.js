@@ -1,0 +1,139 @@
+import { NavLink, Route, useParams } from 'react-router-dom';
+import React, { useContext, useState, useEffect, Suspense } from 'react';
+
+import AuthContext from '../store/auth-context';
+import ArrowLeft from '../components/ArrowLeft';
+import StarRatings from 'react-star-ratings';
+import ArtistAlbum from '../components/Artist/ArtistAlbum';
+import Loader from '../components/Layout/Loader';
+import BackToTopBtn from '../components/Layout/BackToTopBtn';
+
+const ArtistSingle = props => {
+
+    const params = useParams();
+    const ctx = useContext(AuthContext);
+    const [albums, setAlbums] = useState([]);
+    const [artist, setArtist] = useState();
+    let API_URL = "https://api.spotify.com/v1/artists/" + params.aristId + "/albums";
+    const [paginate, setPaginate] = useState(false);
+    const [apiLink, setApiLink] = useState(API_URL);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if ((apiLink !== null)) {
+            setLoading(true);
+            fetch(apiLink, {
+                headers: {
+                    'Authorization': 'Bearer ' + ctx.accessToken
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    API_URL = data.next;
+                    setLoading(false);
+                    setAlbums(albums.concat(data.items));
+                    setApiLink(data.next);
+                    setPaginate(false);
+                }).catch((error) => {
+                    console.log(error);
+                });
+        }
+    }, [paginate]);
+
+
+
+    const trackScrolling = () => {
+        const wrappedElement = document.getElementById('loadmore');
+        if (isBottom(wrappedElement)) {
+            setPaginate(true);
+        }
+    };
+
+    function isBottom(el) {
+        return el.getBoundingClientRect().bottom <= window.innerHeight;
+    }
+
+
+    useEffect(() => {
+        document.addEventListener('scroll', trackScrolling);
+        let API_URL2 = "https://api.spotify.com/v1/artists/" + params.aristId;
+        fetch(API_URL2, {
+            headers: {
+                'Authorization': 'Bearer ' + ctx.accessToken
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                setArtist(data);
+            }).catch((error) => {
+                console.log(error);
+            });
+
+
+    }, [])
+
+
+
+    return (
+        <>
+            <div className="container py-5 bg-light">
+                <Loader loading={loading} />
+                <NavLink to="/artists">
+                    <div className="d-flex align-items-center hovergreen ">
+                        <ArrowLeft />
+                        <h4 className="mb-0">   Go Back</h4>
+                    </div>
+                </NavLink>
+                <div className="row">
+                    <div className="col-lg-12 mt-4 artist-albums">
+                        <div className="row align-items-center ">
+                            <div className="col-lg-3">
+                                <div className="position-relative single-artist-item ">
+                                    <div className="artist-img">
+                                        <img src={artist?.images[0]?.url} className='absolute-image-cover' />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-6 artist-details mt-lg-0 mt-4">
+                                <h2>
+                                    <span className="border-bottom-green">
+                                        {artist?.name}
+                                    </span>
+                                </h2>
+                                <p className="mt-5 text-black">{artist?.followers.total + " followers"}</p>
+                                <p className=" text-black"><b>Genres : </b>{artist?.genres.toString()}</p>
+                                <div className="mt-3">
+                                    {artist && <StarRatings
+                                        rating={(artist?.popularity * 0.05)}
+                                        starRatedColor="#1DB954"
+                                        numberOfStars={5}
+                                        name='rating'
+                                        starDimension="25px"
+                                        starSpacing="1px"
+                                    />}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-12 mt-5">
+                        <h3 className='fw-700  '>
+                            <span className="border-bottom-green">Albums</span>
+                        </h3>
+                    </div>
+
+                    {albums?.map(function (album, i) {
+                        return (
+                            <ArtistAlbum key={i.toString()} album={album} />
+                        )
+                    })}
+                    <div id="loadmore"></div>
+                </div>
+            </div>
+            <BackToTopBtn />
+        </>
+
+    )
+}
+
+export default ArtistSingle;

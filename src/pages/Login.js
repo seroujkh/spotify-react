@@ -37,7 +37,7 @@ const Login = props => {
         if (  window.location.hostname === 'localhost') {
             url += '&redirect_uri=http://localhost:3000/login';
         }else  {
-            url += "&redirect_uri=https://seroujkh.github.io/login";
+            url += "&redirect_uri=https://seroujkh.github.io/spotify-artist/login";
         }
         window.location = url;
     };
@@ -50,15 +50,15 @@ const Login = props => {
                     <div className='col-xl-9 col-lg-10 h-100'>
                         <div className='row  align-items-center login-box-wrapper'>
                             <div onClick={goDown} className=' cursor-md-pointer col-lg-6 bg-green d-flex flex-column align-items-center justify-content-center login-box-single '>
-                                <img src={logo} className='logo' />
+                                <img src={logo} className='logo'  alt=""  />
                                 <h1 className='text-white text-center pt-5'>SEARCH YOUR ARITSTS</h1>
-                                <img src={arrow} className="arrow-down d-lg-none " />
+                                <img src={arrow} className="arrow-down d-lg-none " alt=""  />
                             </div>
                             <div ref={loginSection} id='loginbtn' className=' col-lg-6 bg-white d-flex flex-column align-items-center justify-content-center login-box-single'>
                                 <h3 className='afterline-small'>Welcome Back</h3>
                                 <a className=" custom-btn custom-btn-black" allow-hover='yes' onClick={loginHandler}>
                                     Login with Spotify
-                                    <img src={logo} className='btn-icon-right' />
+                                    <img src={logo} className='btn-icon-right'  alt=""  />
                                 </a>
                             </div>
                         </div>

@@ -3,8 +3,8 @@ import './assets/css/main.css';
 import './assets/css/bootstrap.min.css';
 import './assets/fonts/stylesheet.css';
 
-import React, { useContext, useEffect, useState } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Route,  Redirect } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Artists from './pages/Artists';

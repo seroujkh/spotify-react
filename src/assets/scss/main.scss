@@ -170,6 +170,7 @@
 .back-to-top-btn {
     position: fixed;
     bottom: 25px;
+    z-index: 999;
     right: 10px;
     background-color: $green;
     width: 30px;

@@ -572,6 +572,7 @@ a:hover {
 .back-to-top-btn {
   position: fixed;
   bottom: 25px;
+  z-index: 999;
   right: 10px;
   background-color: #1DB954;
   width: 30px;

@@ -17,10 +17,10 @@ const getCookie = (cname) => {
   let ca = decodedCookie.split(';');
   for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
-    while (c.charAt(0) == ' ') {
+    while (c.charAt(0) === ' ') {
       c = c.substring(1);
     }
-    if (c.indexOf(name) == 0) {
+    if (c.indexOf(name) === 0) {
       return c.substring(name.length, c.length);
     }
   }
@@ -70,11 +70,11 @@ export const AuthContextProvider = (props) => {
 
 
     let currentLightMode = localStorage.getItem("lightmode");
-    if (currentLightMode == null) {
+    if (currentLightMode === null) {
       localStorage.setItem("lightmode", "light");
       setLightMode("light");
     } else {
-      if (currentLightMode == 'dark') document.querySelector("body").classList.add("dark");
+      if (currentLightMode === 'dark') document.querySelector("body").classList.add("dark");
       setLightMode(currentLightMode);
 
     }
@@ -83,7 +83,7 @@ export const AuthContextProvider = (props) => {
 
   const setLightModeHandle = (state) => {
     setLightMode(state);
-    if (state == 'dark') {
+    if (state === 'dark') {
       localStorage.setItem("lightmode", "dark");
       document.querySelector("body").classList.add("dark");
     } else {
@@ -96,6 +96,8 @@ export const AuthContextProvider = (props) => {
   const logoutHandler = () => {
     document.cookie = "token=null";
     setIsLoggedIn(false);
+    setAccessToken(null);
+    setUser(null);
   };
 
 

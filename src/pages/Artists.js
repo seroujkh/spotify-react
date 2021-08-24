@@ -1,5 +1,5 @@
 import SearchBar from '../components/SearchBar.js/SearchBar';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ArtistItem from '../components/Artist/ArtistItem';
 import AuthContext from '../store/auth-context';
 import Layout from '../components/Layout/Layout';

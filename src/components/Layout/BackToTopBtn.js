@@ -9,7 +9,7 @@ const BackToTopBtn = props => {
 
     return (
         <div className='back-to-top-btn d-flex justify-content-center align-items-center cursor-pointer' onClick={scroll}>
-            <img src={arrowDown} />
+            <img src={arrowDown}  alt="" />
         </div>
     )
 }

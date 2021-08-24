@@ -6,7 +6,7 @@ const ArtistItem = props => {
         <div className="col-md-4   pt-3">
             <NavLink to={"/artist/" + artist.id} className="single-artist-item pt-3 d-flex position-relative flex-column" >
                 <div className="artist-img">
-                    <img src={artist.images[0]?.url} className='absolute-image-cover' />
+                    <img src={artist.images[0]?.url} className='absolute-image-cover'  alt="" />
                 </div>
                 <div className="artist-info">
                     <h2 className="text-white">{artist.name}</h2>

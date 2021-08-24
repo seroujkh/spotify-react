@@ -1,5 +1,5 @@
-import { NavLink, Route, useParams } from 'react-router-dom';
-import React, { useContext, useState, useEffect, Suspense } from 'react';
+import { NavLink,  useParams } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
 
 import AuthContext from '../store/auth-context';
 import ArrowLeft from '../components/ArrowLeft';
@@ -41,21 +41,7 @@ const ArtistSingle = props => {
     }, [paginate]);
 
 
-
-    const trackScrolling = () => {
-        const wrappedElement = document.getElementById('loadmore');
-        if (isBottom(wrappedElement)) {
-            setPaginate(true);
-        }
-    };
-
-    function isBottom(el) {
-        return el.getBoundingClientRect().bottom <= window.innerHeight;
-    }
-
-
     useEffect(() => {
-        document.addEventListener('scroll', trackScrolling);
         let API_URL2 = "https://api.spotify.com/v1/artists/" + params.aristId;
         fetch(API_URL2, {
             headers: {
@@ -68,15 +54,13 @@ const ArtistSingle = props => {
             }).catch((error) => {
                 console.log(error);
             });
-
-
     }, [])
 
 
 
     return (
-        <>
-            <div className="container py-5 bg-light">
+        <div className="bg-light  h-100vh">
+            <div className="container py-5 ">
                 <Loader loading={loading} />
                 <NavLink to="/artists">
                     <div className="d-flex align-items-center hovergreen ">
@@ -90,7 +74,7 @@ const ArtistSingle = props => {
                             <div className="col-lg-3">
                                 <div className="position-relative single-artist-item ">
                                     <div className="artist-img">
-                                        <img src={artist?.images[0]?.url} className='absolute-image-cover' />
+                                        <img src={artist?.images[0]?.url} className='absolute-image-cover'  alt=""  />
                                     </div>
                                 </div>
                             </div>
@@ -115,24 +99,25 @@ const ArtistSingle = props => {
                             </div>
                         </div>
                     </div>
-
                     <div className="col-lg-12 mt-5">
                         <h3 className='fw-700  '>
                             <span className="border-bottom-green">Albums</span>
                         </h3>
                     </div>
-
                     {albums?.map(function (album, i) {
                         return (
                             <ArtistAlbum key={i.toString()} album={album} />
                         )
                     })}
-                    <div id="loadmore"></div>
+                    {apiLink !== null &&<div className="col-lg-12 d-flex justify-content-center py-5">
+                        <div className="custom-btn custom-btn-green" onClick={() => { setPaginate(true); }}>
+                            Load More
+                        </div>
+                    </div> }
                 </div>
             </div>
             <BackToTopBtn />
-        </>
-
+        </div>
     )
 }
 

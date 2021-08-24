@@ -57,6 +57,9 @@ function App() {
         <Route path='/artist/:aristId' exact  >
           <ArtistSingle />
         </Route>
+        <Route path='/login' exact>
+          <Redirect to='/artists' />
+        </Route>
         <Route path="*">
           <NotFound />
         </Route>

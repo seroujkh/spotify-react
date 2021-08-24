@@ -19,8 +19,17 @@ const ArtistSingle = props => {
     const [apiLink, setApiLink] = useState(API_URL);
     const [loading, setLoading] = useState(true);
     const [loading1, setLoading1] = useState(true);
+    const [MainLoading, setMainLoading] = useState(true);
 
     let h = useHistory();
+
+
+    useEffect(() => {
+
+        if (!loading && !loading1) setMainLoading(false);
+
+    }, [loading1, loading]);
+
     useEffect(() => {
         if ((apiLink !== null)) {
             setLoading(true);
@@ -32,13 +41,15 @@ const ArtistSingle = props => {
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
-                        h.replace('/spotify-artist/not-found');
+                        h.replace('/not-found');
                     } else {
                         API_URL = data.next;
                         setLoading(false);
                         setAlbums(albums.concat(data.items));
                         setApiLink(data.next);
                         setPaginate(false);
+                        setLoading(false);
+
                     }
                 }).catch((error) => {
 
@@ -56,7 +67,7 @@ const ArtistSingle = props => {
         }).then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    h.replace('/spotify-artist/not-found');
+                    h.replace('/not-found');
                 } else {
                     setLoading1(false);
                     setArtist(data);
@@ -70,8 +81,8 @@ const ArtistSingle = props => {
     return (
         <div className="bg-light  h-100vh">
             <div className="container py-5 ">
-                <Loader loading={(loading && loading1)} />
-                <div className="d-flex align-items-center hovergreen cursor-pointer " onClick={() => h.replace('/spotify-artist/artists/')}>
+                <Loader loading={(MainLoading || loading)} />
+                <div className="d-flex align-items-center hovergreen cursor-pointer " onClick={() => h.replace('/artists/')}>
                     <ArrowLeft />
                     <h4 className="mb-0"> Go Back</h4>
                 </div>

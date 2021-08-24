@@ -17,7 +17,7 @@ const Login = props => {
         var param_value = myUrl.searchParams.get("access_token");
         if (param_value) {
             ctx.onLogin(param_value);
-            history.replace('/spotify-artist/artists');
+            history.replace('/artists');
         }
     }, [isLoggedIn]);
 
@@ -31,7 +31,7 @@ const Login = props => {
         url += '&scope=' + encodeURIComponent('user-read-private user-read-email');
 
         if (window.location.hostname === 'localhost') {
-            url += '&redirect_uri=http://localhost:3000/spotify-artist/login';
+            url += '&redirect_uri=http://localhost:3000/login';
         } else {
             url += "&redirect_uri=https://seroujkh.github.io/spotify-artist/login";
         }

@@ -30,7 +30,7 @@ const SidebarMenu = props => {
                 <h6 className="text-white mt-4 mb-3">{ctx.user?.name}</h6>
                 <p className="text-white my-0">{ctx.user?.followers?.total + " followers"} </p>
                 <p className="text-white ">{"Country : " + ctx.user?.country} </p>
-                <div className="custom-btn custom-btn-green" onClick={()=>{ctx.onLogout(); history.replace('/spotify-artist/login')}}>
+                <div className="custom-btn custom-btn-green" onClick={()=>{ history.replace('/login'); ctx.onLogout(); }}>
                     Logout
                 </div>
                 <div className="lightmode d-flex justify-content-between px-3 mt-4" onClick={toggleLightMode}>

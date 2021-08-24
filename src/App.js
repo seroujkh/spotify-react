@@ -19,22 +19,22 @@ function App() {
   const ctx = useContext(AuthContext);
   const [isLoggedIn, setIsLoggedIn] = useState();
 
-  // const { isLoggedIn } = ctx;
-  // let history = useHistory();
-
   useEffect(() => {
-    // if (!isLoggedIn) {
-    //   history.replace('/login');
-    // }
     setIsLoggedIn(ctx.isLoggedIn);
   }, [ctx]);
-
 
   if (!isLoggedIn) {
     return (
       <AnimatedSwitchComponent>
-        <Route path='/' exact render={() => { <Redirect to='/login' /> }} />
-        <Route path='/login' exact component={Login} />
+
+        <Route path='/' exact>
+          <Redirect to='/login' />
+        </Route>
+
+        <Route path='/login' exact>
+          <Login />
+        </Route>
+
         <Route path="*">
           <NotFound />
         </Route>
@@ -51,9 +51,6 @@ function App() {
         </Route>
         <Route path='/artist/:aristId' exact  >
           <ArtistSingle />
-        </Route>
-        <Route path='/' exact>
-          <Redirect to='/artists' />
         </Route>
         <Route path="*">
           <NotFound />

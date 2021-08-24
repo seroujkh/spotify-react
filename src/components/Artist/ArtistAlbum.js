@@ -8,12 +8,12 @@ const ArtistAlbum = props => {
     for (let i = 0; i < album?.artists.length; i++) {
         artistNames += album?.artists[i].name + " ";
     }
-
+    if (album == null) return ( <> </>);
     return (
         <div className="col-lg-4  mt-5 ">
             <div className="album-single position-relative mt-3 d-flex position-relative flex-column h-100">
                 <div className="album-img">
-                    <img src={album.images[0]?.url} className='absolute-image-cover' alt="" />
+                    <img src={album?.images[0].url} className='absolute-image-cover' alt="" />
                 </div>
                 <div className=" px-3 pt-3 flex-grow-1">
                     <h5 className="mb-0">{album?.name}</h5>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 const AuthContext = React.createContext({
   isLoggedIn: false,
   accessToken: null,
@@ -8,7 +7,7 @@ const AuthContext = React.createContext({
   onLogout: () => { },
   onLogin: (token) => { },
   setLightMode: (state) => { },
-  loading : null,
+  loading: null,
 });
 
 const getCookie = (cname) => {
@@ -33,7 +32,10 @@ export const AuthContextProvider = (props) => {
   const [accessToken, setAccessToken] = useState(null);
   const [user, setUser] = useState([]);
   const [lightMode, setLightMode] = useState("light");
-  const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+
+  // let h = useHistory();
   const getUser = (token) => {
     let API_URL = "	https://api.spotify.com/v1/me";
     fetch(API_URL, {
@@ -66,8 +68,7 @@ export const AuthContextProvider = (props) => {
       setIsLoggedIn(true);
       setAccessToken(cookieValue);
       getUser(cookieValue);
-    }
-
+    } 
 
     let currentLightMode = localStorage.getItem("lightmode");
     if (currentLightMode === null) {

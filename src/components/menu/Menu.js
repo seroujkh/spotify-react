@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import AuthContext from '../../store/auth-context';
+
+import { useHistory } from "react-router-dom";
 import Burger from "./Burger";
 const SidebarMenu = props => {
     const [menuOpen, setMenuOpen] = useState(false);
     const ctx = useContext(AuthContext);
     const [lightMode,setLightMode]= useState(ctx.lightmode);
-
+    let history = useHistory();
     const toggleLightMode = () => {
         if (lightMode==='light') {
             setLightMode("dark");
@@ -28,7 +30,7 @@ const SidebarMenu = props => {
                 <h6 className="text-white mt-4 mb-3">{ctx.user?.name}</h6>
                 <p className="text-white my-0">{ctx.user?.followers?.total + " followers"} </p>
                 <p className="text-white ">{"Country : " + ctx.user?.country} </p>
-                <div className="custom-btn custom-btn-green" onClick={()=>{ctx.onLogout();}}>
+                <div className="custom-btn custom-btn-green" onClick={()=>{ctx.onLogout(); history.replace('/spotify-artist/login')}}>
                     Logout
                 </div>
                 <div className="lightmode d-flex justify-content-between px-3 mt-4" onClick={toggleLightMode}>

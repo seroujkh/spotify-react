@@ -1,4 +1,4 @@
-import { NavLink,  useParams } from 'react-router-dom';
+import { NavLink, useParams, useHistory } from 'react-router-dom';
 import React, { useContext, useState, useEffect } from 'react';
 
 import AuthContext from '../store/auth-context';
@@ -18,7 +18,9 @@ const ArtistSingle = props => {
     const [paginate, setPaginate] = useState(false);
     const [apiLink, setApiLink] = useState(API_URL);
     const [loading, setLoading] = useState(true);
+    const [loading1, setLoading1] = useState(true);
 
+    let h = useHistory();
     useEffect(() => {
         if ((apiLink !== null)) {
             setLoading(true);
@@ -29,13 +31,17 @@ const ArtistSingle = props => {
             })
                 .then(response => response.json())
                 .then(data => {
-                    API_URL = data.next;
-                    setLoading(false);
-                    setAlbums(albums.concat(data.items));
-                    setApiLink(data.next);
-                    setPaginate(false);
+                    if (data.error) {
+                        h.replace('/spotify-artist/not-found');
+                    } else {
+                        API_URL = data.next;
+                        setLoading(false);
+                        setAlbums(albums.concat(data.items));
+                        setApiLink(data.next);
+                        setPaginate(false);
+                    }
                 }).catch((error) => {
-                    console.log(error);
+
                 });
         }
     }, [paginate]);
@@ -47,34 +53,36 @@ const ArtistSingle = props => {
             headers: {
                 'Authorization': 'Bearer ' + ctx.accessToken
             },
-        })
-            .then(response => response.json())
+        }).then(response => response.json())
             .then(data => {
-                setArtist(data);
+                if (data.error) {
+                    h.replace('/spotify-artist/not-found');
+                } else {
+                    setLoading1(false);
+                    setArtist(data);
+                }
             }).catch((error) => {
-                console.log(error);
+                // h.replace('/spotify-artist/not-found');
             });
     }, [])
-
 
 
     return (
         <div className="bg-light  h-100vh">
             <div className="container py-5 ">
-                <Loader loading={loading} />
-                <NavLink to="/artists">
-                    <div className="d-flex align-items-center hovergreen ">
-                        <ArrowLeft />
-                        <h4 className="mb-0">   Go Back</h4>
-                    </div>
-                </NavLink>
+                <Loader loading={(loading && loading1)} />
+                <div className="d-flex align-items-center hovergreen cursor-pointer " onClick={() => h.replace('/spotify-artist/artists/')}>
+                    <ArrowLeft />
+                    <h4 className="mb-0"> Go Back</h4>
+                </div>
+
                 <div className="row">
                     <div className="col-lg-12 mt-4 artist-albums">
                         <div className="row align-items-center ">
                             <div className="col-lg-3">
                                 <div className="position-relative single-artist-item ">
                                     <div className="artist-img">
-                                        <img src={artist?.images[0]?.url} className='absolute-image-cover'  alt=""  />
+                                        <img src={artist?.images[0]?.url} className='absolute-image-cover' alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -109,12 +117,13 @@ const ArtistSingle = props => {
                             <ArtistAlbum key={i.toString()} album={album} />
                         )
                     })}
-                    {apiLink !== null &&<div className="col-lg-12 d-flex justify-content-center py-5">
+                    {apiLink !== null && <div className="col-lg-12 d-flex justify-content-center py-5">
                         <div className="custom-btn custom-btn-green" onClick={() => { setPaginate(true); }}>
                             Load More
                         </div>
-                    </div> }
+                    </div>}
                 </div>
+
             </div>
             <BackToTopBtn />
         </div>

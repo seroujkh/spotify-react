@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/spotify-artist/static/css/main.a828deb1.chunk.css",
+    "main.js": "/spotify-artist/static/js/main.390753a5.chunk.js",
+    "main.js.map": "/spotify-artist/static/js/main.390753a5.chunk.js.map",
+    "runtime-main.js": "/spotify-artist/static/js/runtime-main.d95d11e0.js",
+    "runtime-main.js.map": "/spotify-artist/static/js/runtime-main.d95d11e0.js.map",
+    "static/js/2.a8cad119.chunk.js": "/spotify-artist/static/js/2.a8cad119.chunk.js",
+    "static/js/2.a8cad119.chunk.js.map": "/spotify-artist/static/js/2.a8cad119.chunk.js.map",
+    "static/js/3.c1d96cb3.chunk.js": "/spotify-artist/static/js/3.c1d96cb3.chunk.js",
+    "static/js/3.c1d96cb3.chunk.js.map": "/spotify-artist/static/js/3.c1d96cb3.chunk.js.map",
+    "index.html": "/spotify-artist/index.html",
+    "static/css/main.a828deb1.chunk.css.map": "/spotify-artist/static/css/main.a828deb1.chunk.css.map",
+    "static/js/2.a8cad119.chunk.js.LICENSE.txt": "/spotify-artist/static/js/2.a8cad119.chunk.js.LICENSE.txt",
+    "static/media/stylesheet.css": "/spotify-artist/static/media/Gotham-XLightItalic.aeeb07c1.woff2",
+    "static/media/arrowdown.e0ee1028.svg": "/spotify-artist/static/media/arrowdown.e0ee1028.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d95d11e0.js",
+    "static/js/2.a8cad119.chunk.js",
+    "static/css/main.a828deb1.chunk.css",
+    "static/js/main.390753a5.chunk.js"
+  ]
+}

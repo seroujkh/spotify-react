@@ -1,7 +1,7 @@
 {
   "name": "spotify",
   "version": "0.1.0",
-  "homepage": "https://seroujkh.github.io/spotify-artist/",
+  "homepage": "https://seroujkh.github.io/spotify-artist",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
@@ -16,10 +16,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

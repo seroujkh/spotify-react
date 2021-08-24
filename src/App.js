@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     // if (!isLoggedIn) {
-    //   history.replace('/spotify-artist/login');
+    //   history.replace('/login');
     // }
     setIsLoggedIn(ctx.isLoggedIn);
   }, [ctx]);
@@ -33,8 +33,8 @@ function App() {
   if (!isLoggedIn) {
     return (
       <AnimatedSwitchComponent>
-        <Route path='/' exact render={() => { <Redirect to='/spotify-artist/login' /> }} />
-        <Route path='/spotify-artist/login' exact component={Login} />
+        <Route path='/' exact render={() => { <Redirect to='/login' /> }} />
+        <Route path='/login' exact component={Login} />
         <Route path="*">
           <NotFound />
         </Route>
@@ -44,16 +44,16 @@ function App() {
     return (
       <AnimatedSwitchComponent >
         <Route path='/' exact>
-          <Redirect to='/spotify-artist/artists' />
+          <Redirect to='/artists' />
         </Route>
-        <Route path='/spotify-artist/artists' exact>
+        <Route path='/artists' exact>
           <Artists />
         </Route>
-        <Route path='/spotify-artist/artist/:aristId' exact  >
+        <Route path='/artist/:aristId' exact  >
           <ArtistSingle />
         </Route>
-        <Route path='/spotify-artist/' exact>
-          <Redirect to='/spotify-artist/artists' />
+        <Route path='/' exact>
+          <Redirect to='/artists' />
         </Route>
         <Route path="*">
           <NotFound />

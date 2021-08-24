@@ -1,5 +1,5 @@
 import SearchBar from '../components/SearchBar.js/SearchBar';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ArtistItem from '../components/Artist/ArtistItem';
 import AuthContext from '../store/auth-context';
 import Layout from '../components/Layout/Layout';
@@ -13,7 +13,12 @@ const Artists = props => {
     const ctx = useContext(AuthContext);
 
     let input, API_URL;
-    const { loading } = ctx;
+
+    const [loading, setLoading] = useState(ctx.loading);
+
+    useEffect(() => {
+        setLoading(ctx.loading)
+    }, [ctx])
 
 
     const onTextChangeHandler = (e) => {

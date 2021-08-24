@@ -7,19 +7,17 @@ import AuthContext from '../store/auth-context';
 const Login = props => {
     const loginSection = useRef(null);
     const goDown = () => window.innerWidth <= 1024 ? loginSection.current.scrollIntoView() : null;
-    const ctx = useContext(AuthContext);
-
-    let history = useHistory();
-    const { isLoggedIn } = ctx;
-
-    useEffect(() => {
-        var myUrl = new URL(window.location.href.replace(/#/g, "?"));
-        var param_value = myUrl.searchParams.get("access_token");
-        if (param_value) {
-            ctx.onLogin(param_value);
-            history.replace('/artists');
-        }
-    }, [isLoggedIn]);
+    // const ctx = useContext(AuthContext);
+    // let history = useHistory();
+    // const { isLoggedIn } = ctx;
+    // useEffect(() => {
+    //     var myUrl = new URL(window.location.href.replace(/#/g, "?"));
+    //     var param_value = myUrl.searchParams.get("access_token");
+    //     if (param_value) {
+    //         ctx.onLogin(param_value);
+    //         history.replace('/artists');
+    //     }
+    // }, [isLoggedIn]);
 
 
 
@@ -30,10 +28,11 @@ const Login = props => {
         url += '&client_id=' + encodeURIComponent(Constants.SPOTIFY.clientId);
         url += '&scope=' + encodeURIComponent('user-read-private user-read-email');
 
-        if (window.location.hostname === 'localhost') {
-            url += '&redirect_uri=http://localhost:3000/login';
+        if (window.location.hostname === 'seroujkh.github.io') {
+            url += "&redirect_uri=https://seroujkh.github.io/spotify-react";
         } else {
-            url += "&redirect_uri=https://seroujkh.github.io/spotify-artist/login";
+            url += '&redirect_uri=http://localhost:3000';
+
         }
         window.location = url;
     };

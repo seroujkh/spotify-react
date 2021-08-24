@@ -12,16 +12,18 @@ import NotFound from './pages/NotFound';
 import ArtistSingle from './pages/ArtistSingle';
 
 import AuthContext from './store/auth-context';
-
+import AcessToken from './pages/AccessToken';
 import AnimatedSwitchComponent from './components/Layout/AnimatedSwitchComponent';
 
 function App() {
   const ctx = useContext(AuthContext);
   const [isLoggedIn, setIsLoggedIn] = useState();
-
+  
+  // let history = useHistory();
   useEffect(() => {
     setIsLoggedIn(ctx.isLoggedIn);
   }, [ctx]);
+
 
   if (!isLoggedIn) {
     return (
@@ -35,9 +37,12 @@ function App() {
           <Login />
         </Route>
 
+        <Route exact path="/:access_token" render={() => (<AcessToken />)} />
+        
         <Route path="*">
           <NotFound />
         </Route>
+
       </AnimatedSwitchComponent>
     )
   } else {

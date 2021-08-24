@@ -55,7 +55,6 @@ export const AuthContextProvider = (props) => {
           setUser(user);
           setLoading(false);
         }
-        console.log(user);
 
       }).catch((error) => {
         console.log(error);
@@ -68,7 +67,7 @@ export const AuthContextProvider = (props) => {
       setIsLoggedIn(true);
       setAccessToken(cookieValue);
       getUser(cookieValue);
-    } 
+    }
 
     let currentLightMode = localStorage.getItem("lightmode");
     if (currentLightMode === null) {

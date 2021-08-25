@@ -1,28 +1,15 @@
 import logo from '../assets/icons/logo.png';
 import arrow from '../assets/icons/arrowdown.svg';
-import React, { useRef, useEffect, useContext } from 'react';
+import React, { useRef } from 'react';
 import Constants from '../store/Constants';
-import { useHistory } from 'react-router-dom';
-import AuthContext from '../store/auth-context';
 const Login = props => {
     const loginSection = useRef(null);
     const goDown = () => window.innerWidth <= 1024 ? loginSection.current.scrollIntoView() : null;
-    // const ctx = useContext(AuthContext);
-    // let history = useHistory();
-    // const { isLoggedIn } = ctx;
-    // useEffect(() => {
-    //     var myUrl = new URL(window.location.href.replace(/#/g, "?"));
-    //     var param_value = myUrl.searchParams.get("access_token");
-    //     if (param_value) {
-    //         ctx.onLogin(param_value);
-    //         history.replace('/artists');
-    //     }
-    // }, [isLoggedIn]);
-
-
 
     const loginHandler = (event) => {
         event.preventDefault();
+
+        // spotify implicit login url
         let url = 'https://accounts.spotify.com/authorize';
         url += '?response_type=token';
         url += '&client_id=' + encodeURIComponent(Constants.SPOTIFY.clientId);
@@ -32,7 +19,6 @@ const Login = props => {
             url += "&redirect_uri=https://seroujkh.github.io/spotify-react";
         } else {
             url += '&redirect_uri=http://localhost:3000';
-
         }
         window.location = url;
     };

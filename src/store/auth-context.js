@@ -35,7 +35,6 @@ export const AuthContextProvider = (props) => {
   const [loading, setLoading] = useState(true);
 
 
-  // let h = useHistory();
   const getUser = (token) => {
     let API_URL = "	https://api.spotify.com/v1/me";
     fetch(API_URL, {

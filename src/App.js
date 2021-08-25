@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './assets/css/main.css';
 import './assets/css/bootstrap.min.css';
 import './assets/fonts/stylesheet.css';
@@ -19,7 +18,6 @@ function App() {
   const ctx = useContext(AuthContext);
   const [isLoggedIn, setIsLoggedIn] = useState();
   
-  // let history = useHistory();
   useEffect(() => {
     setIsLoggedIn(ctx.isLoggedIn);
   }, [ctx]);

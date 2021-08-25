@@ -12,9 +12,9 @@ const ArtistSingle = props => {
 
     const params = useParams();
     const ctx = useContext(AuthContext);
+
     const [albums, setAlbums] = useState([]);
     const [artist, setArtist] = useState();
-    let API_URL = "https://api.spotify.com/v1/artists/" + params.aristId + "/albums";
     const [paginate, setPaginate] = useState(false);
     const [apiLink, setApiLink] = useState(API_URL);
     const [loading, setLoading] = useState(true);
@@ -22,15 +22,17 @@ const ArtistSingle = props => {
     const [MainLoading, setMainLoading] = useState(true);
 
     let h = useHistory();
+    let API_URL = "https://api.spotify.com/v1/artists/" + params.aristId + "/albums";
 
 
     useEffect(() => {
-
+        // loading of albums and artist
         if (!loading && !loading1) setMainLoading(false);
 
     }, [loading1, loading]);
 
     useEffect(() => {
+        //get albums with consecutive paginations
         if ((apiLink !== null)) {
             setLoading(true);
             fetch(apiLink, {
@@ -49,7 +51,6 @@ const ArtistSingle = props => {
                         setApiLink(data.next);
                         setPaginate(false);
                         setLoading(false);
-
                     }
                 }).catch((error) => {
 
@@ -59,6 +60,7 @@ const ArtistSingle = props => {
 
 
     useEffect(() => {
+        // get artist info
         let API_URL2 = "https://api.spotify.com/v1/artists/" + params.aristId;
         fetch(API_URL2, {
             headers: {
@@ -73,7 +75,7 @@ const ArtistSingle = props => {
                     setArtist(data);
                 }
             }).catch((error) => {
-                // h.replace('/spotify-artist/not-found');
+
             });
     }, [])
 
@@ -86,7 +88,6 @@ const ArtistSingle = props => {
                     <ArrowLeft />
                     <h4 className="mb-0"> Go Back</h4>
                 </div>
-
                 <div className="row">
                     <div className="col-lg-12 mt-4 artist-albums">
                         <div className="row align-items-center ">
@@ -134,7 +135,6 @@ const ArtistSingle = props => {
                         </div>
                     </div>}
                 </div>
-
             </div>
             <BackToTopBtn />
         </div>

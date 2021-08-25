@@ -7,14 +7,15 @@ import BackToTopBtn from '../components/Layout/BackToTopBtn';
 import Loader from '../components/Layout/Loader';
 const Artists = props => {
 
-    const [artists, setArtists] = useState();
-
-    const [searchTerm, setSearchTerm] = useState('...');
     const ctx = useContext(AuthContext);
 
+
+    const [artists, setArtists] = useState();
+    const [searchTerm, setSearchTerm] = useState('...');
+    const [loading, setLoading] = useState(ctx.loading);
+  
     let input, API_URL;
 
-    const [loading, setLoading] = useState(ctx.loading);
 
     useEffect(() => {
         setLoading(ctx.loading)

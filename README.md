@@ -13,13 +13,18 @@ Installation:
 
 ### `npm start`
 
+
 Installation:
 
 ### `npm install`
 
+
 To Start Server:
 
 ### `npm start`
+
+
+To Build Application for deploymnet
 
 ### `npm run build`
 
@@ -31,7 +36,9 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-To Visit App
+
+
+To Visit App:
 
 ### `localhost:3000`
 

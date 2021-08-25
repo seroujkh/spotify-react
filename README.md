@@ -2,6 +2,9 @@
 
 A react App using Spotify API that allows you to search for Spotify artists and their albums.
 
+## Live Version 
+
+You can access the live version on :  [https://seroujkh.github.io/spotify-react/#/login](https://seroujkh.github.io/spotify-react/#/login)
 
 
 ## Available Scripts

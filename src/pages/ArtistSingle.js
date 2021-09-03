@@ -12,6 +12,7 @@ const ArtistSingle = props => {
 
     const params = useParams();
     const ctx = useContext(AuthContext);
+    let API_URL = "https://api.spotify.com/v1/artists/" + params.aristId + "/albums";
 
     const [albums, setAlbums] = useState([]);
     const [artist, setArtist] = useState();
@@ -22,7 +23,6 @@ const ArtistSingle = props => {
     const [MainLoading, setMainLoading] = useState(true);
 
     let h = useHistory();
-    let API_URL = "https://api.spotify.com/v1/artists/" + params.aristId + "/albums";
 
 
     useEffect(() => {

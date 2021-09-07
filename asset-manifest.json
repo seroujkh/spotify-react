@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/spotify-react/static/css/main.50a6ad2c.chunk.css",
-    "main.js": "/spotify-react/static/js/main.a1fe0e0b.chunk.js",
-    "main.js.map": "/spotify-react/static/js/main.a1fe0e0b.chunk.js.map",
-    "runtime-main.js": "/spotify-react/static/js/runtime-main.621567e6.js",
-    "runtime-main.js.map": "/spotify-react/static/js/runtime-main.621567e6.js.map",
-    "static/js/2.a8ca6c14.chunk.js": "/spotify-react/static/js/2.a8ca6c14.chunk.js",
-    "static/js/2.a8ca6c14.chunk.js.map": "/spotify-react/static/js/2.a8ca6c14.chunk.js.map",
-    "static/js/3.c1d96cb3.chunk.js": "/spotify-react/static/js/3.c1d96cb3.chunk.js",
-    "static/js/3.c1d96cb3.chunk.js.map": "/spotify-react/static/js/3.c1d96cb3.chunk.js.map",
+    "main.css": "/spotify-react/static/css/main.e9ee7d5b.chunk.css",
+    "main.js": "/spotify-react/static/js/main.4cb7f78b.chunk.js",
+    "main.js.map": "/spotify-react/static/js/main.4cb7f78b.chunk.js.map",
+    "runtime-main.js": "/spotify-react/static/js/runtime-main.a15c2ed7.js",
+    "runtime-main.js.map": "/spotify-react/static/js/runtime-main.a15c2ed7.js.map",
+    "static/js/2.012c8f09.chunk.js": "/spotify-react/static/js/2.012c8f09.chunk.js",
+    "static/js/2.012c8f09.chunk.js.map": "/spotify-react/static/js/2.012c8f09.chunk.js.map",
+    "static/js/3.5ba733eb.chunk.js": "/spotify-react/static/js/3.5ba733eb.chunk.js",
+    "static/js/3.5ba733eb.chunk.js.map": "/spotify-react/static/js/3.5ba733eb.chunk.js.map",
     "index.html": "/spotify-react/index.html",
-    "static/css/main.50a6ad2c.chunk.css.map": "/spotify-react/static/css/main.50a6ad2c.chunk.css.map",
-    "static/js/2.a8ca6c14.chunk.js.LICENSE.txt": "/spotify-react/static/js/2.a8ca6c14.chunk.js.LICENSE.txt",
+    "static/css/main.e9ee7d5b.chunk.css.map": "/spotify-react/static/css/main.e9ee7d5b.chunk.css.map",
+    "static/js/2.012c8f09.chunk.js.LICENSE.txt": "/spotify-react/static/js/2.012c8f09.chunk.js.LICENSE.txt",
     "static/media/stylesheet.css": "/spotify-react/static/media/Gotham-XLightItalic.aeeb07c1.woff2",
     "static/media/arrowdown.e0ee1028.svg": "/spotify-react/static/media/arrowdown.e0ee1028.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.621567e6.js",
-    "static/js/2.a8ca6c14.chunk.js",
-    "static/css/main.50a6ad2c.chunk.css",
-    "static/js/main.a1fe0e0b.chunk.js"
+    "static/js/runtime-main.a15c2ed7.js",
+    "static/js/2.012c8f09.chunk.js",
+    "static/css/main.e9ee7d5b.chunk.css",
+    "static/js/main.4cb7f78b.chunk.js"
   ]
 }

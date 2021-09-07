@@ -5,42 +5,31 @@ import AuthContext from '../store/auth-context';
 import Layout from '../components/Layout/Layout';
 import BackToTopBtn from '../components/Layout/BackToTopBtn';
 import Loader from '../components/Layout/Loader';
+import { fetchArtists } from '../services/services';
 const Artists = props => {
 
     const ctx = useContext(AuthContext);
-
-
     const [artists, setArtists] = useState();
     const [searchTerm, setSearchTerm] = useState('...');
     const [loading, setLoading] = useState(ctx.loading);
-  
-    let input, API_URL;
-
+    let input, response;
 
     useEffect(() => {
         setLoading(ctx.loading)
-    }, [ctx])
+    }, [ctx.loading])
 
 
-    const onTextChangeHandler = (e) => {
+    const onTextChangeHandler = async (e) => {
         input = e.target.value;
         if (input.trim() !== '') {
             setSearchTerm(input);
-            API_URL = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
-                input
-            )}&type=artist`;
-
-            fetch(API_URL, {
-                headers: {
-                    'Authorization': 'Bearer ' + ctx.accessToken
-                },
-            }).then(response => response.json())
-                .then(data => {
-                    setArtists(data.artists.items)
-                }).catch((error) => {
-                    console.log(error);
-                });
-
+            response = await fetchArtists(input, ctx.accessToken);
+            if (response.artists.items) {
+                setArtists(response.artists.items);
+            } else {
+                if (response.error.message) ctx.setErrorMssg(response.error.message);
+                else ctx.setErrorMssg(JSON.stringify(response));
+            }
         } else {
             setSearchTerm('...');
             setArtists([]);

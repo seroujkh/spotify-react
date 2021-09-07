@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 const ArtistItem = props => {
     const artist = props.artist;
     return (
-        <div className="col-md-4   pt-3">
-            <NavLink to={"/artist/" + artist.id} className="single-artist-item pt-3 d-flex position-relative flex-column" >
+        <div className="col-lg-4 col-md-6   pt-3">
+            <NavLink to={"/artist/" + artist.name.replace(/\s/g, '-').toLowerCase()} className="single-artist-item pt-3 d-flex position-relative flex-column" >
                 <div className="artist-img">
-                    <img src={artist.images[0]?.url} className='absolute-image-cover'  alt="" />
+                    <img src={artist.images[0]?.url} className='absolute-image-cover' alt="" />
                 </div>
                 <div className="artist-info">
                     <h2 className="text-white">{artist.name}</h2>

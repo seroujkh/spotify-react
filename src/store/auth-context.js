@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { getCookie, changeLightModeTo, getUserProfile } from '../services/services';
+import { useHistory } from 'react-router';
+
 const AuthContext = React.createContext({
   isLoggedIn: false,
   accessToken: null,
@@ -8,23 +11,9 @@ const AuthContext = React.createContext({
   onLogin: (token) => { },
   setLightMode: (state) => { },
   loading: null,
+  errorMssg: null,
+  setErrorMssg: (msg) => { }
 });
-
-const getCookie = (cname) => {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
 
 
 export const AuthContextProvider = (props) => {
@@ -33,31 +22,20 @@ export const AuthContextProvider = (props) => {
   const [user, setUser] = useState([]);
   const [lightMode, setLightMode] = useState("light");
   const [loading, setLoading] = useState(true);
+  const [errorMssg, setErrorMssg] = useState("");
 
-
-  const getUser = (token) => {
-    let API_URL = "	https://api.spotify.com/v1/me";
-    fetch(API_URL, {
-      headers: {
-        'Authorization': 'Bearer ' + token
-      },
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data !== null) {
-          let user = {
-            icon: data.images[0].url,
-            name: data.display_name,
-            country: data.country,
-            followers: data.followers
-          }
-          setUser(user);
-          setLoading(false);
-        }
-
-      }).catch((error) => {
-        console.log(error);
-      });
+  let history = useHistory();
+  const getUser = async (token) => {
+    const response = await getUserProfile(token);
+    if (response.name) {
+      setUser(response);
+      setLoading(false);
+    } else {
+      if (response.error.message) setErrorMssg(response.error.message);
+      else setErrorMssg(JSON.stringify(response));
+      logoutHandler();
+      setTimeout(() => { history.replace('/login'); }, 500)
+    }
   }
 
   useEffect(() => {
@@ -75,21 +53,13 @@ export const AuthContextProvider = (props) => {
     } else {
       if (currentLightMode === 'dark') document.querySelector("body").classList.add("dark");
       setLightMode(currentLightMode);
-
     }
   }, []);
 
 
   const setLightModeHandle = (state) => {
     setLightMode(state);
-    if (state === 'dark') {
-      localStorage.setItem("lightmode", "dark");
-      document.querySelector("body").classList.add("dark");
-    } else {
-      localStorage.setItem("lightmode", "light");
-      document.querySelector("body").classList.remove("dark");
-    }
-
+    changeLightModeTo(state);
   }
 
   const logoutHandler = () => {
@@ -109,6 +79,11 @@ export const AuthContextProvider = (props) => {
     getUser(token);
   };
 
+  const ErrorMssgHandler = (msg) => {
+    setErrorMssg(msg);
+    logoutHandler();
+
+  }
 
 
 
@@ -122,7 +97,9 @@ export const AuthContextProvider = (props) => {
         user: user,
         loading: loading,
         lightmode: lightMode,
-        setLightMode: setLightModeHandle
+        setLightMode: setLightModeHandle,
+        errorMssg: errorMssg,
+        setErrorMssg: ErrorMssgHandler
       }}
     >
       {props.children}

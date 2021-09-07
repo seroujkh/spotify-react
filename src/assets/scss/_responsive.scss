@@ -19,8 +19,18 @@
     .searchbar__container input {
         margin-left: 20px;
     }
+    .single-artist-page .single-artist-item .artist-img {
+        padding-top: 60% !important;
+    }
+    
 }
 @media (max-width: 768px) {
+    .single-artist-item .artist-img {
+        padding-top: 70% !important;
+    }
+    .album-single .album-img {
+        padding-top: 50% !important;
+    }
 }
 
 @media (max-width: 576px) {
@@ -30,7 +40,7 @@
     html {
         font-size: 16px !important;
     }
-    h2  {
+    h2 {
         font-size: 1.7rem !important;
     }
     .searchbar__container {

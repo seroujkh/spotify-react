@@ -10,7 +10,7 @@ const ArtistAlbum = props => {
     }
     if (album == null) return ( <> </>);
     return (
-        <div className="col-lg-4  mt-5 ">
+        <div className="col-lg-4 col-md-6 mt-5 ">
             <div className="album-single position-relative mt-3 d-flex position-relative flex-column h-100">
                 <div className="album-img">
                     <img src={album?.images[0].url} className='absolute-image-cover' alt="" />

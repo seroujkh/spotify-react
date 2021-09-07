@@ -124,6 +124,87 @@ a:hover {
   width: 50px;
 }
 
+.error-box {
+  position: relative;
+  pointer-events: none;
+}
+
+.error-box .black-shadow {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0;
+  z-index: -1;
+}
+
+.error-box .error-msg {
+  position: fixed;
+  background-color: #1DB954;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  z-index: -1;
+  padding: 20px;
+  border-radius: 25px;
+  color: white !important;
+  -webkit-transform: translate(-50%, -1000%) !important;
+          transform: translate(-50%, -1000%) !important;
+  text-align: center;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+
+.error-box .error-msg svg {
+  position: absolute;
+  width: 40px !important;
+  left: 50%;
+  top: 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 99;
+  background: black;
+  border-radius: 50%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.error-box .error-msg svg path {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.error-box .error-msg svg:hover {
+  background: white;
+}
+
+.error-box .error-msg svg:hover path {
+  fill: #1DB954;
+}
+
+.error-box.show * {
+  pointer-events: visible;
+}
+
+.error-box.show .black-shadow {
+  opacity: 1;
+  z-index: 1;
+}
+
+.error-box.show .error-msg {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%) !important;
+          transform: translate(-50%, -50%) !important;
+  z-index: 99;
+}
+
 .menu-btn {
   position: absolute;
   z-index: 99999;
@@ -314,6 +395,18 @@ a:hover {
   .searchbar__container input {
     margin-left: 20px;
   }
+  .single-artist-page .single-artist-item .artist-img {
+    padding-top: 60% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .single-artist-item .artist-img {
+    padding-top: 70% !important;
+  }
+  .album-single .album-img {
+    padding-top: 50% !important;
+  }
 }
 
 @media (max-width: 576px) {
@@ -368,6 +461,10 @@ a:hover {
 
 .floating-btn-wrapper.searching {
   top: 120px;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .h-100vh {

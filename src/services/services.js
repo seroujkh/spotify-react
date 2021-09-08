@@ -27,7 +27,16 @@ export async function fetchArtists(input, accessToken) {
         });
     return response;
 }
-
+export function getLinkHashArray(location) {
+    const link = location.substring(1).split('&').reduce(function (initial, item) {
+        if (item) {
+            var parts = item.split('=');
+            initial[parts[0]] = decodeURIComponent(parts[1]);
+        }
+        return initial;
+    }, {});
+    return link;
+}
 export async function getUserProfile(accessToken) {
     let API_URL = "	https://api.spotify.com/v1/me";
     const response = await fetch(API_URL, {

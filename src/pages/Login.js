@@ -20,7 +20,7 @@ const Login = props => {
         login();
     };
     useEffect(() => {
-        if (ctx.errosMssg != "") {
+        if (ctx.errorMssg !== "") {
             setShowError(true);
             setErrorMssg(ctx.errorMssg);
         }
@@ -31,8 +31,6 @@ const Login = props => {
     }
     return (
         <>
-
-
             <div className="bg-light d-flex h-100vh justify-content-center align-items-center ">
                 <div className='container-fluid h-100'>
                     <div className='row justify-content-center align-items-center h-100'>
@@ -56,7 +54,9 @@ const Login = props => {
                 </div>
             </div>
             <div className={"error-box " + (showError ? " show " : '')}>
-                <div className="black-shadow"></div>
+                <div className="black-shadow"
+                    onClick={closeHandler}
+                ></div>
                 <div className="error-msg">
                     <svg onClick={closeHandler} fill="#fff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                         viewBox="0 0 511.76 511.76">

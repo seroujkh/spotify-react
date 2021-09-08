@@ -53,14 +53,16 @@ const ArtistSingle = props => {
     }
 
     useEffect(async () => {
-        if (paginate) {
+        if (paginate && (apiLink !== null)) {
             const response = await fetchAritstAlbums(apiLink, ctx.accessToken);
             if (response.items) {
                 setAlbums(albums.concat(response.items));
                 setApiLink(response.next);
                 setPaginate(false);
                 setLoading(false);
-                window.addEventListener('scroll', () => { listenToScroll() });
+                if (response.next) {
+                    window.addEventListener('scroll', () => { listenToScroll() });
+                }
             } else {
                 if (response.error.message) ctx.setErrorMssg(response.error.message);
                 else ctx.setErrorMssg(JSON.stringify(response));

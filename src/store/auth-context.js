@@ -11,7 +11,7 @@ const AuthContext = React.createContext({
   onLogin: (token) => { },
   setLightMode: (state) => { },
   loading: null,
-  errorMssg: null,
+  errorMssg: "",
   setErrorMssg: (msg) => { }
 });
 

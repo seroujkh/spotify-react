@@ -9,7 +9,7 @@ const SearchBar = props => {
             <div className=' searchbar__container bg-green '>
                 <form onSubmit={onSubmit}>
                     <img src={logo} className='logo'  alt="" />
-                    <input type='text' className='ml-lg-4' onChange={(e) => props.onTextChangeHandler(e)} />
+                    <input type='text' className='ml-lg-4' onChange={(e) => props.onTextChangeHandler(e)} value={props.value!=="..." ? props.value : ''} />
                     <input type="submit" className="d-none" />
                 </form>
             </div>

@@ -1,12 +1,14 @@
-import React from 'react';
 import Constants from "../store/Constants";
 
-import { useHistory } from 'react-router-dom';
 
-
-export async function slugTranslation(name, accessToken) {
-    const response = await fetchArtists(name, accessToken);
-    return response;
+export function changeLightModeTo(state) {
+    if (state === 'dark') {
+        localStorage.setItem("lightmode", "dark");
+        document.querySelector("body").classList.add("dark");
+    } else {
+        localStorage.setItem("lightmode", "light");
+        document.querySelector("body").classList.remove("dark");
+    }
 }
 
 export async function fetchArtists(input, accessToken) {
@@ -120,12 +122,9 @@ export const getCookie = (cname) => {
     return "";
 }
 
-export function changeLightModeTo(state) {
-    if (state === 'dark') {
-        localStorage.setItem("lightmode", "dark");
-        document.querySelector("body").classList.add("dark");
-    } else {
-        localStorage.setItem("lightmode", "light");
-        document.querySelector("body").classList.remove("dark");
-    }
+
+
+export async function slugTranslation(name, accessToken) {
+    const response = await fetchArtists(name, accessToken);
+    return response;
 }

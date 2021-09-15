@@ -21,7 +21,6 @@ const AccessToken = props => {
     return (
         <Loader loading={true} />
     )
-
 }
 
 

@@ -669,7 +669,7 @@ a:hover {
 .back-to-top-btn {
   position: fixed;
   bottom: 25px;
-  z-index: 999;
+  z-index: 98;
   right: 10px;
   background-color: #1DB954;
   width: 30px;
@@ -705,6 +705,10 @@ p,
 span {
   -webkit-transition: 0.5s !important;
   transition: 0.5s !important;
+}
+
+hr {
+  border-color: #1DB954 !important;
 }
 
 body.dark {

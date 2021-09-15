@@ -1,5 +1,4 @@
 const ArrowLeft = props => {
-
     return (
         <svg className="arrowleft"
             viewBox="0 0 330 330"  >

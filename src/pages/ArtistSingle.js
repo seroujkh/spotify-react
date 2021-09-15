@@ -24,7 +24,7 @@ const ArtistSingle = props => {
 
     async function getArtist() {
         const artist = await fetchArtists(params.aristId, ctx.accessToken);
-        if (artist.artists.items.length == 0) {
+        if ((artist.artists.items.length == 0) || (params.aristId.toLowerCase() !== artist.artists.items[0].name.replace(/\s/g, '-').toLowerCase())) {
             h.replace('/not-found');
         } else if (artist.artists.items[0]) {
             setArtist(artist.artists.items[0]);
@@ -43,7 +43,6 @@ const ArtistSingle = props => {
             window.removeEventListener('scroll', () => { listenToScroll() })
         }
     }, []);
-
 
     const listenToScroll = () => {
         if (getScrollY() >= 0.5) {

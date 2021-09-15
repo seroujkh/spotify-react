@@ -14,9 +14,8 @@ const NotFound = props => {
                             () => {
                                 history.replace("/artists/")
                             }
-                        } className="link pointer" >
+                        } className="link pointer text-white" >
                             Artists
-
                         </li>
                     </ul>
                 </div>

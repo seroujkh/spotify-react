@@ -17,6 +17,9 @@ p,
 span {
     transition: 0.5s !important;
 }
+hr {
+border-color: $green !important;
+}
 body.dark {
     background-color: black;
     #loginbtn h3 {

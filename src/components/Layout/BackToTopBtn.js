@@ -1,4 +1,3 @@
-
 import arrowDown from '../../assets/icons/arrowdown.svg'
 
 const BackToTopBtn = props => {

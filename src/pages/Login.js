@@ -2,16 +2,14 @@ import logo from '../assets/icons/logo.png';
 import arrow from '../assets/icons/arrowdown.svg';
 import React, { useRef, useContext } from 'react';
 import { login } from '../services/services';
-
 import AuthContext from '../store/auth-context';
 import { useEffect, useState } from 'react/cjs/react.development';
+
 const Login = props => {
 
     const ctx = useContext(AuthContext);
-
     const loginSection = useRef(null);
     const goDown = () => window.innerWidth <= 1024 ? loginSection.current.scrollIntoView() : null;
-
     const [showError, setShowError] = useState(false);
     const [errorMssg, setErrorMssg] = useState(ctx.errorMssg);
 

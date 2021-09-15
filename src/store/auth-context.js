@@ -7,6 +7,10 @@ const AuthContext = React.createContext({
   accessToken: null,
   user: null,
   lightmode: null,
+  searchedTerm: null,
+  searchedResults : [],
+  setSearchedTerm: () =>  {},
+  setSearchedResults: () => {},
   onLogout: () => { },
   onLogin: (token) => { },
   setLightMode: (state) => { },
@@ -23,6 +27,14 @@ export const AuthContextProvider = (props) => {
   const [lightMode, setLightMode] = useState("light");
   const [loading, setLoading] = useState(true);
   const [errorMssg, setErrorMssg] = useState("");
+
+  //search artists
+  const [searchedTerm,setSearchedTerm] = useState(null);
+  const [searchedResults, setSearchedResults] = useState(null);
+
+  const setSearchedTermHandler = (val)=> setSearchedTerm(val);
+  const setSearchedResultsHandler = (val)=> setSearchedResults(val);
+
 
   let history = useHistory();
   const getUser = async (token) => {
@@ -66,7 +78,7 @@ export const AuthContextProvider = (props) => {
     document.cookie = "token=null";
     setIsLoggedIn(false);
     setAccessToken(null);
-    setUser(null);
+    setUser(null); 
   };
 
 
@@ -95,6 +107,10 @@ export const AuthContextProvider = (props) => {
         onLogin: loginHandler,
         accessToken: accessToken,
         user: user,
+        searchedTerm : searchedTerm,
+        setSearchedTerm: setSearchedTermHandler,
+        setSearchedResults : setSearchedResultsHandler,
+        searchedResults : searchedResults,
         loading: loading,
         lightmode: lightMode,
         setLightMode: setLightModeHandle,

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import AuthContext from '../../store/auth-context';
-
 import { useHistory } from "react-router-dom";
 import Burger from "./Burger";
 const SidebarMenu = props => {
@@ -30,7 +29,11 @@ const SidebarMenu = props => {
                 <h6 className="text-white mt-4 mb-3">{ctx.user?.name}</h6>
                 <p className="text-white my-0">{ctx.user?.followers?.total + " followers"} </p>
                 <p className="text-white ">{"Country : " + ctx.user?.country} </p>
-                <div className="custom-btn custom-btn-green" onClick={() => { ctx.onLogout(); setTimeout(() => { history.replace('/login'); }, 500) }}>
+                <div className="custom-btn custom-btn-green" onClick={() => {
+                    ctx.onLogout(); 
+                    setTimeout( () => { history.replace('/login');},10);
+                   
+                }}>
                     Logout
                 </div>
                 <div className="lightmode d-flex justify-content-between px-3 mt-4" onClick={toggleLightMode}>

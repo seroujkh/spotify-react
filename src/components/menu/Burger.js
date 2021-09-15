@@ -1,5 +1,3 @@
-
-
 const Burger = props => {
 
     return (
@@ -7,8 +5,6 @@ const Burger = props => {
             <span className={"menu-btn__burger" +( props.open ?  ' open ' : '')}></span>
         </div>
     )
-
-
 }
 
 export default Burger;

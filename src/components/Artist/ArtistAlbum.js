@@ -1,7 +1,4 @@
 import React from 'react';
-
-
-
 const ArtistAlbum = props => {
     const album = props.album;
     let artistNames = "";

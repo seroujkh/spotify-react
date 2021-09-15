@@ -15,24 +15,35 @@ const Artists = props => {
     let input, response;
 
     useEffect(() => {
-        setLoading(ctx.loading)
+        if (ctx.searchedTerm===null)    setSearchTerm("...");
+        else setSearchTerm(ctx.searchedTerm);
+        if (ctx.searchedResults===null) setArtists([])
+        else setArtists(ctx.searchedResults);
+    }, [ctx.searchedTerm, ctx.searchedResults]);
+
+    useEffect(() => {
+        setLoading(ctx.loading);
     }, [ctx.loading])
 
 
     const onTextChangeHandler = async (e) => {
         input = e.target.value;
         if (input.trim() !== '') {
-            setSearchTerm(input);
+            // setSearchTerm(input);
+            ctx.setSearchedTerm(input);
             response = await fetchArtists(input, ctx.accessToken);
             if (response.artists.items) {
-                setArtists(response.artists.items);
+                // setArtists(response.artists.items);
+                ctx.setSearchedResults(response.artists.items);
             } else {
                 if (response.error.message) ctx.setErrorMssg(response.error.message);
                 else ctx.setErrorMssg(JSON.stringify(response));
             }
         } else {
-            setSearchTerm('...');
-            setArtists([]);
+            // setSearchTerm('...');
+            // setArtists([]);
+            ctx.setSearchedTerm("...");
+            ctx.setSearchedResults([]);
         }
     }
 
@@ -41,7 +52,7 @@ const Artists = props => {
             <Loader loading={loading} />
             <BackToTopBtn />
             <div className='bg-light  h-100vh  '>
-                <SearchBar onTextChangeHandler={onTextChangeHandler} />
+                <SearchBar onTextChangeHandler={onTextChangeHandler} value={searchTerm} />
                 <div className='container mt-5 pb-5'>
                     <div className='row'>
                         <div className='col-12'>

@@ -10,7 +10,7 @@ const ArtistItem = props => {
                 </div>
                 <div className="artist-info">
                     <h2 className="text-white">{artist.name}</h2>
-                    <p className="text-white">{artist.followers?.total} <span className="text-white"> followers</span> </p>
+                    <p className="text-white mb-2">{artist.followers?.total} <span className="text-white"> followers</span> </p>
                     <StarRatings
                         rating={artist.popularity * 0.05}
                         starRatedColor="#1DB954"

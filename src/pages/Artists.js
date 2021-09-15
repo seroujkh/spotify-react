@@ -5,7 +5,8 @@ import AuthContext from '../store/auth-context';
 import Layout from '../components/Layout/Layout';
 import BackToTopBtn from '../components/Layout/BackToTopBtn';
 import Loader from '../components/Layout/Loader';
-import { fetchArtists } from '../services/services';
+import { fetchArtists, useDebounce } from '../services/services';
+
 const Artists = props => {
 
     const ctx = useContext(AuthContext);
@@ -15,9 +16,9 @@ const Artists = props => {
     let input, response;
 
     useEffect(() => {
-        if (ctx.searchedTerm===null)    setSearchTerm("...");
+        if (ctx.searchedTerm === null) setSearchTerm("...");
         else setSearchTerm(ctx.searchedTerm);
-        if (ctx.searchedResults===null) setArtists([])
+        if (ctx.searchedResults === null) setArtists([])
         else setArtists(ctx.searchedResults);
     }, [ctx.searchedTerm, ctx.searchedResults]);
 
@@ -26,22 +27,26 @@ const Artists = props => {
     }, [ctx.loading])
 
 
-    const onTextChangeHandler = async (e) => {
-        input = e.target.value;
-        if (input.trim() !== '') {
-            // setSearchTerm(input);
-            ctx.setSearchedTerm(input);
-            response = await fetchArtists(input, ctx.accessToken);
-            if (response.artists.items) {
+    const debouncedSearchTerm = useDebounce(searchTerm, 250);
+
+    useEffect(async () => {
+        if (debouncedSearchTerm && searchTerm !== '...') {
+            response = await fetchArtists(searchTerm, ctx.accessToken);
+            if (response && response.artists.items) {
                 // setArtists(response.artists.items);
                 ctx.setSearchedResults(response.artists.items);
             } else {
                 if (response.error.message) ctx.setErrorMssg(response.error.message);
                 else ctx.setErrorMssg(JSON.stringify(response));
             }
+        } 
+    }, [debouncedSearchTerm]);
+
+    const onTextChangeHandler = (e) => {
+        input = e.target.value;
+        if (input.trim() !== '') {
+            ctx.setSearchedTerm(input);
         } else {
-            // setSearchTerm('...');
-            // setArtists([]);
             ctx.setSearchedTerm("...");
             ctx.setSearchedResults([]);
         }
@@ -51,7 +56,7 @@ const Artists = props => {
         <Layout>
             <Loader loading={loading} />
             <BackToTopBtn />
-            <div className='bg-light  h-100vh  '>
+            <div className='bg-light  h-100vh artist-search-page  '>
                 <SearchBar onTextChangeHandler={onTextChangeHandler} value={searchTerm} />
                 <div className='container mt-5 pb-5'>
                     <div className='row'>

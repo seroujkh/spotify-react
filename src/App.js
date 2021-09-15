@@ -2,7 +2,7 @@ import './assets/css/main.css';
 import './assets/css/bootstrap.min.css';
 import './assets/fonts/stylesheet.css';
 import React, { useContext, useEffect, useState } from 'react';
-import { Route, Redirect, useHistory } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Login from './pages/Login';
 import Artists from './pages/Artists';
 import NotFound from './pages/NotFound';

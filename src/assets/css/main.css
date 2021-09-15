@@ -428,9 +428,7 @@ a:hover {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    padding: 0 9px;
   }
   .searchbar__container .logo {
     width: 40px !important;
@@ -445,6 +443,9 @@ a:hover {
   }
   .single-artist-item .artist-info h2 {
     font-size: 1.2rem !important;
+  }
+  .artist-search-page .single-artist-item .artist-img {
+    padding-top: 80% !important;
   }
 }
 

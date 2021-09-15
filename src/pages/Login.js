@@ -41,7 +41,7 @@ const Login = props => {
                                 </div>
                                 <div ref={loginSection} id='loginbtn' className=' col-lg-6 bg-white d-flex flex-column align-items-center justify-content-center login-box-single'>
                                     <h3 className='afterline-small'>Welcome Back</h3>
-                                    <a className=" custom-btn custom-btn-black" allow-hover='yes' onClick={loginHandler}>
+                                    <a href="#" className=" custom-btn custom-btn-black" allow-hover='yes' onClick={loginHandler}>
                                         Login with Spotify
                                         <img src={logo} className='btn-icon-right' alt="" />
                                     </a>

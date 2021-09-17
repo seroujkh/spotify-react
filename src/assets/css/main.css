@@ -447,6 +447,16 @@ a:hover {
   .artist-search-page .single-artist-item .artist-img {
     padding-top: 80% !important;
   }
+  .mobile-login {
+    padding: 10px;
+    border-radius: 50%;
+  }
+  .mobile-login img {
+    width: 50px !important;
+  }
+  .mobile-login h1 {
+    font-size: 18px !important;
+  }
 }
 
 .floating-btn-wrapper {

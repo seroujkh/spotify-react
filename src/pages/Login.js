@@ -34,12 +34,16 @@ const Login = props => {
                     <div className='row justify-content-center align-items-center h-100'>
                         <div className='col-xl-9 col-lg-10 h-100'>
                             <div className='row  align-items-center login-box-wrapper'>
-                                <div onClick={goDown} className=' cursor-md-pointer col-lg-6 bg-green d-flex flex-column align-items-center justify-content-center login-box-single '>
+                                <div onClick={goDown} className=' cursor-md-pointer col-md-6 bg-green d-none d-md-flex flex-column align-items-center justify-content-center login-box-single '>
                                     <img src={logo} className='logo' alt="" />
                                     <h1 className='text-white text-center pt-5'>SEARCH YOUR ARITSTS</h1>
                                     <img src={arrow} className="arrow-down d-lg-none " alt="" />
                                 </div>
-                                <div ref={loginSection} id='loginbtn' className=' col-lg-6 bg-white d-flex flex-column align-items-center justify-content-center login-box-single'>
+                                <div ref={loginSection} id='loginbtn' className=' col-md-6 bg-white d-flex flex-column align-items-center justify-content-center login-box-single'>
+                                    <div className="d-flex d-sm-none bg-green mobile-login flex-column mb-3 justify-content-center align-items-center">
+                                        <img src={logo} className='logo' alt="" /> 
+                                        {/* <h1 className='text-white text-center pt-3'>SEARCH YOUR ARITSTS</h1> */}
+                                    </div>
                                     <h3 className='afterline-small'>Welcome Back</h3>
                                     <a href="#" className=" custom-btn custom-btn-black" allow-hover='yes' onClick={loginHandler}>
                                         Login with Spotify

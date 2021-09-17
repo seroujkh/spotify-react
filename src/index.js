@@ -6,6 +6,7 @@ import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { AuthContextProvider } from './store/auth-context';
 
 
+
 ReactDOM.render(
     <HashRouter>
         <AuthContextProvider>

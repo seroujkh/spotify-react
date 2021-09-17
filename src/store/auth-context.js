@@ -75,10 +75,10 @@ export const AuthContextProvider = (props) => {
   }
 
   const logoutHandler = () => {
-    document.cookie = "token=null";
     setIsLoggedIn(false);
     setAccessToken(null);
     setUser(null); 
+    document.cookie = "token=null";
   };
 
 
@@ -94,10 +94,7 @@ export const AuthContextProvider = (props) => {
   const ErrorMssgHandler = (msg) => {
     setErrorMssg(msg);
     logoutHandler();
-
   }
-
-
 
   return (
     <AuthContext.Provider

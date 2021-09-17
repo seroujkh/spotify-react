@@ -32,14 +32,14 @@ const Artists = props => {
     useEffect(async () => {
         if (debouncedSearchTerm && searchTerm !== '...') {
             response = await fetchArtists(searchTerm, ctx.accessToken);
-            if (response && response.artists.items) {
+            if (response !== undefined && response.artists.items) {
                 // setArtists(response.artists.items);
                 ctx.setSearchedResults(response.artists.items);
             } else {
                 if (response.error.message) ctx.setErrorMssg(response.error.message);
                 else ctx.setErrorMssg(JSON.stringify(response));
             }
-        } 
+        }
     }, [debouncedSearchTerm]);
 
     const onTextChangeHandler = (e) => {

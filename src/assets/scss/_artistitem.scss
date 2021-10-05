@@ -1,0 +1,39 @@
+.single-artist-item {
+    position: relative;
+    .artist-img {
+        position: relative;
+        padding-top: 110%;
+        overflow: hidden !important;
+        border-radius: 25px;
+    }
+    &:hover {
+        .artist-img {
+            img {
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    .artist-info {
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        padding: 20px;
+        height: auto;
+        width: 100%;
+        bottom: 0;
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+    }
+}
+
+.artist-details {
+    p {
+        font-weight: 500;
+        margin-bottom: 5px;
+        text-transform: capitalize;
+    }
+}

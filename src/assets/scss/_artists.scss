@@ -1,0 +1,27 @@
+.searchbar__container {
+    height: 75px;
+    padding-left: 0;
+    border-radius: 100px;
+    transition: .5s;
+
+    &.scrolled {
+        height: 50px;
+    }
+
+    .logo {
+        width: 75px !important;
+    }
+
+    input[type='text'] {
+        height: 50px;
+        border-radius: 25px;
+        width: 250px;
+        background-color: white;
+        padding: 10px;
+        border-color: transparent;
+        &:focus {
+            outline: none !important;
+        }
+    }
+
+}

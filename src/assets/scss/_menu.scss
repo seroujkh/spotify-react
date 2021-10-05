@@ -1,0 +1,111 @@
+.menu-btn {
+  position: absolute;
+  z-index: 99999;
+  right: 20px;
+  top: 20px;
+  height: 20px;
+  width: 28px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+
+  &.open {
+    position: fixed !important;
+  }
+  &__burger {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    width: 28px;
+    height: 3px;
+    transition: all 0.5s ease-in-out;
+    background: black;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      width: 28px;
+      height: 3px;
+      transition: all 0.5s ease-in-out;
+      background: black;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      width: 28px;
+      height: 3px;
+      transition: all 0.5s ease-in-out;
+      background: black;
+    }
+
+    &.open {
+      background: transparent;
+      &::before,
+      &::after {
+        background: white !important;
+      }
+      &::before {
+        transform: rotate(45deg) translate(5px, 8px);
+        background: white !important;
+      }
+
+      &::after {
+        width: 28px;
+        transform: rotate(-45deg) translate(3px, -7px);
+        background: white !important;
+      }
+    }
+  }
+}
+
+.side_menu {
+  position: fixed;
+  z-index: 99;
+  transition: all 0.5s ease-in-out;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  width: 300px;
+  height: 100vh;
+  padding: 20px;
+  transform: translateX(100%);
+  &.open {
+    transform: translateX(0);
+  }
+  .profile-icon-wrapper {
+    width: 125px;
+    .profile-icon {
+      position: relative;
+      padding-top: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+}
+.lightmode {
+  cursor: pointer;
+  .toggle_light {
+    background-color: white;
+    width: 70px;
+    height: 30px;
+    border-radius: 25px;
+    position: relative;
+    transition: all 0.5s ease-in-out !important;
+    div {
+      transition: all 0.5s ease-in-out !important;
+      background-color: $green;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      &.left {
+        left: 5px;
+      }
+      &.right {
+        left: calc(70px - 25px);
+      }
+    }
+  }
+}

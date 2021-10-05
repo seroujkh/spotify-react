@@ -1,0 +1,89 @@
+.login-box-wrapper {
+    border-radius: 15px;
+    overflow: hidden;
+    .login-box-single {
+        min-height: 75vh;
+    }
+    h1 {
+        font-weight: 600;
+        line-height: 1.4;
+    }
+    h3 {
+        font-weight: 500;
+    }
+    .logo {
+        width: 100px;
+        animation: scaleAnim 1s alternate infinite ease-in;
+    }
+    .arrow-down {
+        width: 50px;
+    }
+}
+
+.error-box {
+    position: relative;
+    pointer-events: none;
+    .black-shadow {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px);
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        transition: 0.5s;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .error-msg {
+        position: fixed;
+        background-color: $green;
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        z-index: -1;
+        padding: 20px;
+        border-radius: 25px;
+        color: white !important;
+        transform: translate(-50%, -1000%) !important;
+        text-align: center;
+        transition: 2s;
+        svg {
+            position: absolute;
+            width: 40px !important;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -50%);
+            z-index: 99;
+            background: black;
+            border-radius: 50%;
+            transition: 0.5s;
+            cursor: pointer;
+            path {
+                transition: 0.5s;
+            }
+            &:hover {
+                background: white;
+                path {
+                    fill: $green;
+                }
+            }
+        }
+    }
+
+    &.show {
+        * {
+            pointer-events: visible;
+        }
+        .black-shadow {
+            opacity: 1;
+            z-index: 1;
+        }
+        .error-msg {
+            opacity: 1;
+            transform: translate(-50%, -50%) !important;
+            z-index: 99;
+        }
+    }
+}

@@ -1,0 +1,187 @@
+@import "config";
+@import "artists";
+@import "album";
+@import "login";
+@import "menu";
+@import "artistitem";
+@import "responsive";
+
+.floating-btn-wrapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-top: 35.5px;
+    transform: translate(-50%, -50%);
+    transition: 0.5s;
+    &.searching {
+        top: 120px;
+    }
+}
+.pointer {
+    cursor: pointer;
+}
+.h-100vh {
+    min-height: 100vh;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.custom-btn {
+    border-radius: 25px;
+    position: relative;
+    height: 50px;
+    width: 270px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    transition: 0.5s;
+    font-weight: 400;
+    color: white !important;
+
+    &-black {
+        background-color: black;
+        &:hover {
+            background-color: $green;
+            color: white !important;
+        }
+    }
+    &-green {
+        background-color: $green;
+        &:hover {
+            background-color: $greenhover;
+            color: white !important;
+        }
+    }
+
+    .btn-icon-right {
+        transition: 0.5s;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 30px;
+    }
+}
+
+.search-btn {
+    transition: 0.5s;
+    font-weight: 400;
+    padding-left: 15px !important;
+    padding-right: 45px;
+    background-image: url("../icons/search-icon.png");
+    background-size: 20px;
+    background-position: calc(100% - 15px) center;
+    background-repeat: no-repeat;
+    &::placeholder {
+        font-weight: 400;
+    }
+}
+
+.afterline-small {
+    &::after {
+        content: "";
+        width: 70px;
+        background-color: $green;
+        height: 2.5px;
+        display: block;
+        margin: 15px auto;
+    }
+    &.left {
+        &::after {
+            margin-left: 0px !important;
+            width: 100%;
+        }
+    }
+}
+.switch-wrapper {
+    position: relative;
+}
+
+.switch-wrapper > div {
+    position: absolute;
+    width: 100%;
+}
+.border-bottom-green {
+    padding-bottom: 10px;
+    border-bottom: 4.5px solid $green;
+}
+
+.pointer-none {
+    cursor: default;
+}
+
+.absolute-image-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: 0.5s;
+    object-fit: cover;
+}
+
+.arrowleft {
+    height: 25px;
+    transform: rotate(90deg);
+    path {
+        fill: black;
+    }
+}
+.hovergreen {
+    * {
+        color: black;
+        transition: 0.5s all;
+    }
+    &:hover {
+        * {
+            color: $green;
+        }
+        svg path {
+            fill: $green;
+        }
+    }
+}
+
+.loader {
+    background-color: $green;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    transition: all 0.5s ease-in-out;
+    .logo {
+        width: 100px;
+        animation: scaleAnim 1s alternate infinite ease-in;
+    }
+    &.hide {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+@keyframes scaleAnim {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+.back-to-top-btn {
+    position: fixed;
+    bottom: 25px;
+    z-index: 98;
+    right: 10px;
+    background-color: $green;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    img {
+        width: 15px;
+        transform: rotate(180deg);
+    }
+}
+@import "dark";

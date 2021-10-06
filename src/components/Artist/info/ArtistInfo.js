@@ -15,15 +15,13 @@ const ArtistInfo = props => {
                         </div>
                     </div>
                 </div>
-
-                
                 <div className="col-lg-6 artist-details mt-lg-0 mt-4">
                     <h2>
-                        <span className="border-bottom-green">
+                        <span className="border-bottom-green" data-testid="artist-name">
                             {artist?.name}
                         </span>
                     </h2>
-                    <p className="mt-5 text-black">{artist?.followers.total + " followers"}</p>
+                    <p className="mt-5 text-black" data-testid="artist-followers">{artist?.followers.total + " followers"}</p>
                     <p className=" text-black"><b>Genres : </b>{artist?.genres.toString()}</p>
                     <div className="mt-3">
                         {artist && <StarRatings

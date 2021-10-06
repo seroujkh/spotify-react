@@ -34,9 +34,5 @@ describe('Artist Info', () => {
     //     />)).toEqual(true);
     // });
 
-    test('should render artist star ratings', () => {
-
-
-    });
 
 });

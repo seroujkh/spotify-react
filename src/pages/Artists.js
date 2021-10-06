@@ -57,12 +57,12 @@ const Artists = props => {
         <Layout>
             <Loader loading={loading} />
             <BackToTopBtn />
-            <div className='bg-light  h-100vh artist-search-page  '>
+            <div className='bg-light  h-100vh artist-search-page  ' data-testid="artist-home">
                 <SearchBar onTextChangeHandler={onTextChangeHandler} value={searchTerm} />
                 <div className='container mt-5 pb-5'>
                     <div className='row'>
                         <div className='col-12'>
-                            <h3 className='fw-700 '>Search for your favorite artists</h3>
+                            <h3 className='fw-700 ' data-testid="homepage-title">Search for your favorite artists</h3>
                             <p className='text-secondary'>{'Showing results for ' + searchTerm}</p>
                         </div>
                         {artists?.map(function (artist, i) {

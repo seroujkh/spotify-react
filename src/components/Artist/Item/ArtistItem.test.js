@@ -113,10 +113,7 @@ describe('Single Artist Item', () => {
     //     />)).toEqual(true);
     // });
 
-    test('should render artist star ratings', () => {
-
-
-    });
+ 
 
 });
 

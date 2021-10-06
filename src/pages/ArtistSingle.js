@@ -5,7 +5,7 @@ import AuthContext from '../store/auth-context';
 import ArrowLeft from '../components/ArrowLeft';
 import StarRatings from 'react-star-ratings';
 import ArtistAlbum from '../components/Artist/Album/ArtistAlbum';
-import Loader from '../components/Layout/Loader';
+import Loader from '../components/Layout/Loader/Loader';
 import BackToTopBtn from '../components/Layout/BackToTopBtn';
 import Layout from '../components/Layout/Layout';
 import { fetchArtists, getScrollY, fetchAritstAlbums } from '../services/services';

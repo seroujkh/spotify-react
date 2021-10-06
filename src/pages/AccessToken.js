@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import Loader from "../components/Layout/Loader";
+import Loader from "../components/Layout/Loader/Loader";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../store/auth-context";
 import { getLinkHashArray } from "../services/services";

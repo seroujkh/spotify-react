@@ -3,8 +3,51 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ArtistInfo from './ArtistInfo';
 
+const MOCK_ARTIST = {
+    "external_urls": {
+        "spotify": "https://open.spotify.com/artist/28hJdGN1Awf7u3ifk2lVkg"
+    },
+    "followers": {
+        "href": null,
+        "total": 747449
+    },
+    "genres": [
+        "alternative metal",
+        "death metal",
+        "groove metal",
+        "hard rock",
+        "metal",
+        "old school thrash",
+        "rock",
+        "thrash metal"
+    ],
+    "href": "https://api.spotify.com/v1/artists/28hJdGN1Awf7u3ifk2lVkg",
+    "id": "28hJdGN1Awf7u3ifk2lVkg",
+    "images": [
+        {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab6761610000e5ebb42315840a0dd1ddda0e82ab",
+            "width": 640
+        },
+        {
+            "height": 320,
+            "url": "https://i.scdn.co/image/ab67616100005174b42315840a0dd1ddda0e82ab",
+            "width": 320
+        },
+        {
+            "height": 160,
+            "url": "https://i.scdn.co/image/ab6761610000f178b42315840a0dd1ddda0e82ab",
+            "width": 160
+        }
+    ],
+    "name": "Testament",
+    "popularity": 56,
+    "type": "artist",
+    "uri": "spotify:artist:28hJdGN1Awf7u3ifk2lVkg"
+}
+
 describe('Artist Info', () => {
-    beforeEach(() => render(<ArtistItem artist={MOCK_ARTIST} />));
+    beforeEach(() => render(<ArtistInfo artist={MOCK_ARTIST} />));
 
     test('should render artist image', () => {
         const image = screen.getByRole("img");

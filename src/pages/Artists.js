@@ -4,7 +4,7 @@ import ArtistItem from '../components/Artist/Item/ArtistItem';
 import AuthContext from '../store/auth-context';
 import Layout from '../components/Layout/Layout';
 import BackToTopBtn from '../components/Layout/BackToTopBtn';
-import Loader from '../components/Layout/Loader';
+import Loader from '../components/Layout/Loader/Loader';
 import { fetchArtists, useDebounce } from '../services/services';
 
 const Artists = props => {

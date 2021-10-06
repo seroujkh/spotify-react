@@ -10,7 +10,6 @@ describe('SearchBar', () => {
 
   it('should render correctly', () => expect(wrapper).toMatchSnapshot());
 
-
   it('should render the value of value', () => {
     wrapper.setProps({ value: 'test' });
     expect(wrapper.find('.search-value-input').prop('value')).toEqual('test');

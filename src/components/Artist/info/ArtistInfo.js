@@ -15,6 +15,8 @@ const ArtistInfo = props => {
                         </div>
                     </div>
                 </div>
+
+                
                 <div className="col-lg-6 artist-details mt-lg-0 mt-4">
                     <h2>
                         <span className="border-bottom-green">

@@ -36,7 +36,6 @@ const ArtistInfo = props => {
                 </div>
             </div>
         </div>
-        
     )
 }
 

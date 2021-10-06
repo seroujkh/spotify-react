@@ -10,6 +10,7 @@ describe('Artist Info', () => {
         const image = screen.getByRole("img");
         expect(image).toHaveAttribute('src', MOCK_ARTIST.images[0].url);
     });
+    
 
     test('should render artist name', () => {
         const name = screen.getByTestId("artist-name");

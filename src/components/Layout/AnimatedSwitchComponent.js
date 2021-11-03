@@ -1,16 +1,19 @@
-import { AnimatedSwitch } from 'react-router-transition';
-
+import React from 'react';
+// import { AnimatedSwitch } from 'react-router-transition';
 const AnimatedSwitchComponent = (props) => {
-    return (
-      <AnimatedSwitch
-        atEnter={{ opacity: 0 }}
-        atLeave={{ opacity: 0 }}
-        atActive={{ opacity: 1 }}
-        className="switch-wrapper"
-      >
-        {props.children}
-      </AnimatedSwitch>
-    )
-  }
+  return (
+    // <AnimatedSwitch
+    //   atEnter={{ opacity: 0 }}
+    //   atLeave={{ opacity: 0 }}
+    //   atActive={{ opacity: 1 }}
+    //   className="switch-wrapper"
+    // >
+    <>
+      {props.children}
+    </>
 
-  export default AnimatedSwitchComponent;
+    // </AnimatedSwitch>
+  )
+}
+
+export default AnimatedSwitchComponent;

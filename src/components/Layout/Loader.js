@@ -9,7 +9,7 @@ const Loader = props => {
     },[props.loading])
 
     return (
-        <div className={"loader d-flex align-items-center justify-content-center " + (loading ? '' : ' hide ')}>
+        <div className={"loader d-flex align-items-center justify-content-center " + (loading ? '' : ' hide  ')}>
             <img src={logo} className='logo'  alt=""  />
         </div>
     )

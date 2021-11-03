@@ -1,4 +1,5 @@
 import logo from '../../assets/icons/logo.png';
+import PropTypes from 'prop-types';
 
 const SearchBar = props => {
     const onSubmit = (event) => {
@@ -17,4 +18,12 @@ const SearchBar = props => {
     )
 }
 
+SearchBar.propTypes = {
+    onTextChangeHandler: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+}
+
+SearchBar.defaultProps={
+    value: '...' 
+}
 export default SearchBar;

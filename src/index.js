@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { AuthContextProvider } from './store/auth-context';
@@ -8,11 +8,11 @@ import { AuthContextProvider } from './store/auth-context';
 
 
 ReactDOM.render(
-    <HashRouter>
+    <BrowserRouter>
         <AuthContextProvider>
             <App />
         </AuthContextProvider>
-    </HashRouter>
+    </BrowserRouter>
     , document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
